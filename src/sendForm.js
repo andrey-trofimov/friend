@@ -8,10 +8,7 @@ export function sendForm() {
         body: userData,
         headers: {
             "Content-type": "application/json; charset=UTF-8",
-            'accept': 'application/json',
-            'Access-Control-Allow-Origin': "http://127.0.0.1:5500/",
-            'Access-Control-Allow-Methods': "POST",
-            "Access-Control-Allow-Headers": "Content-type"
+            'accept': 'application/json'
         }
     }
 
