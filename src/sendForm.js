@@ -8,8 +8,9 @@ export function sendForm() {
         body: userData,
         headers: {
             "Content-type": "application/json; charset=UTF-8",
-            'accept': 'application/json'
-        }
+            'accept': 'application/json',
+        },
+        referrerPolicy: "http://158.160.4.55:49161/v1/auth/register/",
     }
 
     fetch('http://158.160.4.55:49161/v1/auth/register/', options)
