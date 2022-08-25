@@ -9,11 +9,10 @@ export function sendForm() {
         headers: {
             "Content-type": "application/json; charset=UTF-8",
             'accept': 'application/json',
-        },
-        referrerPolicy: "http://158.160.4.55:49161/v1/auth/register/",
+        }
     }
 
-    fetch('http://158.160.4.55:49161/v1/auth/register/', options)
+    fetch('https://cors-anywhere.herokuapp.com/http://158.160.4.55:49161/v1/auth/register/', options)
         .then(response => response.json())
         .then(json => console.log(json))
         .catch(() => { console.log('error') });
@@ -22,7 +21,8 @@ export function sendForm() {
 
 
 
-
+// ,
+// referrerPolicy: "http://158.160.4.55:49161/v1/auth/register/",
 
 // const btn = document.querySelector('.j-btn');
 
