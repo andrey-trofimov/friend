@@ -1,0 +1,39 @@
+/* ============== layout part of css ============== */
+
+.container {
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (max-width: 760px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.vert-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(100vh - 81px);
+
+    @media screen and (max-width: 760px) {
+        justify-content: flex-start;
+    }
+}
+
+.enter-page {
+    margin-left: 50%;
+    max-width: 353px;
+
+    @media screen and (max-width: 760px) {
+        margin-left: auto;
+        margin-right: auto;
+        flex: 9;
+    }
+}
+
+.registration-page {
+    max-width: 320px;
+    margin: 0 auto;
+}

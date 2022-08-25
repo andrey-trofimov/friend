@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=Edge" />
+    <title>ДРУГ | вход</title>
+    <link href="./css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- 32×32 -->
+    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="images/favicons/icon.svg" type="image/svg+xml" />
+    <!-- 180×180 -->
+    <link rel="apple-touch-icon" href="images/favicons/apple.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <script src="./dist/registration.js" defer></script>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="./"><img src="./images/logo.svg" /></a>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="registration-page">
+          <h1 class="title title_registration-page">Укажи личные данные</h1>
+
+          <form>
+            <h2 class="subtitle">Придумай пароль</h2>
+            <label for="password" class="label"
+              >Пароль <span class="error">*</span></label
+            >
+            <input
+              type="password"
+              class="input"
+              id="password"
+              name="password"
+              required
+            />
+            <p class="note" id="password-note">
+              Пароль должен состоять из 8ми символов и включать заглавную букву,
+              специальный символ и цифру
+            </p>
+
+            <label for="password-confirm" class="label"
+              >Повтори пароль <span class="error">*</span></label
+            >
+            <input
+              type="password"
+              class="input"
+              id="password-confirm"
+              name="password-confirm"
+              required
+            />
+            <p class="note" id="password-confirm-note"></p>
+
+            <h2 class="subtitle">Расскажи о себе</h2>
+
+            <label for="name" class="label"
+              >Имя или псевдоним <span class="error">*</span></label
+            >
+            <input type="text" class="input" id="name" name="name" required />
+            <p class="note" id="name-note">
+              Будет доступен только твоему психологу и личному помощнику
+            </p>
+
+            <label for="birth" class="label"
+              >Дата рождения <span class="error">*</span></label
+            >
+            <span class="date-picker">
+              <input
+                type="text"
+                class="input"
+                id="birth"
+                name="birth"
+                required
+                placeholder="__ __ .__ __.__ __ __ __"
+            /></span>
+            <p class="note" id="birth-note">
+              Для получения услуг тебе должно быть 18 или больше лет
+            </p>
+
+            <h2 class="subtitle">Укажи по желанию</h2>
+
+            <label for="email" class="label">E-mail</label>
+            <input type="email" class="input" id="email" name="email" />
+            <p class="note" id="email-note">
+              Присылаем только информацию, связанную с твоими сессиями
+            </p>
+
+            <label for="tg" class="label">Ник в Телеграм</label>
+            <input
+              type="text"
+              class="input"
+              id="tg"
+              name="tg"
+              placeholder="@"
+            />
+            <p class="note" id="tg-note">
+              Присылаем только информацию, связанную с твоими сессиями
+            </p>
+
+            <input
+              type="button"
+              class="button button_registration-page button_block"
+              id="submit"
+              value="Далее"
+            />
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=Edge" />
+    <title>ДРУГ</title>
+    <link href="./css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- 32×32 -->
+    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="images/favicons/icon.svg" type="image/svg+xml" />
+    <!-- 180×180 -->
+    <link rel="apple-touch-icon" href="images/favicons/apple.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <script src="./dist/registration.js" defer></script>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">
+        <a href="./"><img src="./images/logo.svg" /></a>
+      </div>
+    </header>
+
+    <main class="character1">
+      <div class="container">
+        <div class="vert-container">
+          <div class="nav"></div>
+
+          <div class="enter-page">
+            <h1 class="title">Регистрация</h1>
+            <form>
+              <p class="label">
+                Продолжим работу с психологом?<br />
+                Введи свой номер телефона
+              </p>
+
+              <input
+                class="input input_enter-page"
+                type="tel"
+                id="phone"
+                placeholder="+7 (000) 000 00 00"
+              />
+
+              <p class="note" id="phone-note"></p>
+
+              <input
+                class="button button_enter-page button_block"
+                id="submit"
+                type="button"
+                value="Отправить"
+              />
+              <p class="policy">
+                Уже есть личный кабинет?
+                <a href="#">Войти</a>
+              </p>
+            </form>
+          </div>
+
+          <p class="policy">
+            При входе на сервис вы принимаете
+            <a href="#">Политику конфиденциальности</a> и
+            <a href="#">Условия использования сервиса</a>
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
