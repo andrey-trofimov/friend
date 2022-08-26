@@ -180,7 +180,7 @@ function sendData() {
             serverResponse = e.response;
             console.log('Error: ', e.message);
 
-            let obj = JSON.parse(serverResponse);
+            let obj = serverResponse.json();
             for (let key in obj) {
                 console.log('key: ', key, " value: ", obj[key]);
             };
