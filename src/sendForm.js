@@ -1,4 +1,6 @@
-import { form, json, validField } from "./registration.js";
+import { json, serverResponse, responseStatus } from "./registration.js";
+import { buildIdPage } from "./buildIdPage.js";
+
 
 export function sendForm() {
 
@@ -13,9 +15,30 @@ export function sendForm() {
     }
 
     fetch('https://cors-anywhere.herokuapp.com/http://158.160.4.55:49161/v1/auth/register/', options)
-        .then(response => response.json())
-        .then(json => console.log(json))
-        .catch(() => { console.log('error') });
+        .then(res => {
+            if (res.status >= 200 && res.status < 300) {
+                responseStatus = res.status;
+                return res;
+            } else {
+                let error = new Error(res.statusText);
+                error.response = res;
+                throw error
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            serverResponse = JSON.parse(data);
+            console.log("ответ сервера ", serverResponse);
+        })
+        .catch((e) => {
+            responseStatus = e.status;
+            serverResponse = e.response;
+            console.log('Error: ' + e.message);
+            console.log('Responce: ', serverResponse.json());
+
+            // console.log('Status: ', serverResponse.status);
+        })
+        .then(buildIdPage())
 
 }
 

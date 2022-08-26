@@ -41,6 +41,9 @@ export let json = {
     email: "",
 }
 
+export let serverResponse = {};
+export let responseStatus = "";
+
 document.addEventListener(onload, registration());
 
 function registration() {
