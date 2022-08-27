@@ -161,6 +161,8 @@ table {
   max-width: 1180px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 @media screen and (max-width: 760px) {
@@ -221,6 +223,26 @@ table {
   margin: 0 auto;
 }
 
+.profile-page {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.nav {
+  margin-top: 19px;
+}
+
+@media screen and (max-width: 700px) {
+  .nav {
+    margin-top: 24px;
+  }
+}
+
 html {
   font-size: 16px;
 }
@@ -271,6 +293,17 @@ a:hover {
 .title_registration-page {
   margin-bottom: 54px;
   margin-top: 63px;
+}
+
+.title_profile-page {
+  text-align: left;
+}
+
+@media screen and (max-width: 760px) {
+  .title_profile-page {
+    font-size: 1rem;
+    text-align: center;
+  }
 }
 
 .subtitle {
@@ -336,7 +369,7 @@ a:hover {
   color: white;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 760px) {
   .button {
     font-size: 1.25rem;
   }
@@ -388,7 +421,7 @@ a:hover {
   padding-right: 43px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 760px) {
   .button_go-to-profile {
     font-size: 1.125rem;
     max-width: 320px;
@@ -414,6 +447,10 @@ a:hover {
 
 .note_enter-page {
   text-align: center;
+}
+
+.note_profile-page {
+  margin: 22px 0 4px;
 }
 
 .policy {
@@ -449,9 +486,18 @@ a:hover {
   margin-bottom: 39px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 760px) {
   .id-msg {
     font-size: 1.25rem;
     margin-bottom: 16px;
   }
+}
+
+.nav {
+  font-size: 0.75rem;
+  color: #959494;
+}
+
+.nav a {
+  color: #959494;
 }

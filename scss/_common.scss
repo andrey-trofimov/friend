@@ -48,6 +48,15 @@ a:hover {
     margin-top: 63px;
 }
 
+.title_profile-page {
+    text-align: left;
+
+    @media screen and (max-width: 760px) {
+        font-size: 1rem;
+        text-align: center;
+    }
+}
+
 .subtitle {
     padding: 16px 20px 16px 20px;
     font-size: 1rem;
@@ -103,7 +112,7 @@ a:hover {
     cursor: pointer;
     color: white;
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 760px) {
         font-size: 1.25rem;
     }
 }
@@ -149,7 +158,7 @@ a:hover {
     padding-left: 43px;
     padding-right: 43px;
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 760px) {
         font-size: 1.125rem;
         max-width: 320px;
         padding-left: 20px;
@@ -174,6 +183,10 @@ a:hover {
 
 .note_enter-page {
     text-align: center;
+}
+
+.note_profile-page {
+    margin: 22px 0 4px;
 }
 
 .policy {
@@ -208,8 +221,17 @@ a:hover {
     text-align: center;
     margin-bottom: 39px;
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 760px) {
         font-size: 1.25rem;
         margin-bottom: 16px;
+    }
+}
+
+.nav {
+    font-size: 0.75rem;
+    color: $color-note-grey;
+
+    a {
+        color: $color-note-grey;
     }
 }

@@ -1,22 +1,22 @@
 let phone = document.querySelector("#phone");
 let phoneNote = document.querySelector("#phone-note");
-
 let password = document.querySelector("#password");
 let passwordNote = document.querySelector("#password-note");
-
 let button = document.querySelector("#submit");
 
 let json = {};
 
 let serverResponse = "";
 let responseStatus = "";
+let errorText = "";
+let userProfile = {};
 
 let validFieldIndex = {
     phone: false,
     password: false,
 };
 
-// let requestBody = {};
+let proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
 document.addEventListener(onload, initEntry());
 function initEntry() {
@@ -75,8 +75,6 @@ function checkPhoneError() {
     }
 
     json.phone = phoneNumber;
-
-    console.log(json.phone);
 }
 
 function maskPhone() {
@@ -117,6 +115,8 @@ function maskPhone() {
 };
 
 function setPwStyle() {
+    passwordNote.innerHTML = "";
+
     if (password.value.length > 0) {
         password.className = "input input_enter-page input_valid";
         validFieldIndex.password = true;
@@ -141,16 +141,15 @@ function sendEnterForm() {
         button.className = "button button_enter-page button_block";
         button.removeEventListener("click", sendData);
     }
-    console.log(validFieldIndex);
 }
 
 function sendData() {
-    json.phone = phone.value.match(/[\d\+]/);
-    json.phone = phone.value;
+    json.phone = phone.value.match(/[\d\+]/g).join("");
+    json.password = password.value;
 
     let userData = JSON.stringify(json);
 
-    const options = {
+    let options = {
         method: "POST",
         body: userData,
         headers: {
@@ -159,7 +158,7 @@ function sendData() {
         }
     }
 
-    fetch('https://cors-anywhere.herokuapp.com/http://158.160.4.55:49161/v1/auth/login/', options)
+    fetch(`${proxyUrl}http://158.160.4.55:49161/v1/auth/login/`, options)
         .then(res => {
             if (res.status >= 200 && res.status < 300) {
                 responseStatus = res.status;
@@ -167,26 +166,99 @@ function sendData() {
             } else {
                 let error = new Error(res.statusText);
                 error.response = res;
-                throw error
+                responseStatus = res.status;
+                errorText = error;
+                throw error;
             }
         })
         .then(res => res.json())
         .then(data => {
-            serverResponse = JSON.parse(data);
-            console.log("ответ сервера ", serverResponse);
+            let userId = data.id;
+            options = {
+                method: "GET",
+                headers: {
+                    'accept': 'application/json',
+                }
+            }
+
+            fetch(`${proxyUrl}http://158.160.4.55:49161/v1/user?id=${userId}`, options)
+                .then(res => res.json())
+                .then(data => {
+                    buildProfilePage();
+                    return data;
+                })
+                .then(data => showProfile(data));
+
         })
-        .catch((e) => {
-            responseStatus = e.status;
-            serverResponse = e.response;
-            console.log('Error: ', e.message);
+        .catch((e) => e.response.json())
+        .then(data => showError(data));
+}
 
-            let obj = serverResponse.json();
-            for (let key in obj) {
-                console.log('key: ', key, " value: ", obj[key]);
-            };
-        });
-    // .then(buildIdPage())
+function buildProfilePage() {
+    document.querySelector(".character1").className = "";
+    document.querySelector(".container").innerHTML = `
+    
+        <div class="nav"><a href="/">Главная</a> / Профиль</div>
+        <div class="profile-page">
+          <h1 class="title title_profile-page">Профиль</h1>
 
+          <p class="note note_profile-page">Имя или псевдоним *</p>
+          <p id="name"></p>
 
+          <p class="note note_profile-page">Дата рождения *</p>
+          <p id="birth"></p>
 
+          <p class="note note_profile-page">E-mail</p>
+          <p id="email"></p>
+
+          <p class="note note_profile-page">Ник в Телеграм</p>
+          <p id="tg"></p>
+        </div>
+    `;
+}
+
+function showProfile(data) {
+    let arr = ["name", "birth", "email", "tg"]
+    arr.forEach(key => document.getElementById(`${key}`).innerHTML = `${data[key]}`);
+}
+
+function showLoginError(data) {
+    if (responseStatus == 400) {
+        passwordNote.innerHTML = data["Текст"];
+        passwordNote.className = "note note_error";
+        password.className = "input input_error";
+    }
+
+    if (responseStatus == 404) {
+        phoneNote.innerHTML = data["Текст"];
+        phoneNote.className = "note note_error";
+        phone.className = "input input_error";
+    }
+}
+
+function showOtherError() {
+
+    document.querySelector("main").className = "";
+    document.querySelector(".container").innerHTML = `
+    
+        <div class="container">
+            <div class="profile-page">
+                <h1 class="title title_profile-page">Ошибка</h1>
+                <p>${responseStatus} ${errorText}</p>
+            </div>
+        </div>
+    `;
+}
+
+function showError(data) {
+    if (responseStatus >= 200 && responseStatus < 299) {
+        return;
+    } else {
+
+        if (responseStatus == 404 || responseStatus == 400) {
+            showLoginError(data);
+        } else {
+            showOtherError();
+        }
+    }
 }

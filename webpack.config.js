@@ -1,7 +1,7 @@
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/registration.js',
     output: {
-        filename: 'main.js'
+        filename: 'registration.js'
     },
     mode: 'production',
 }
