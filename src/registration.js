@@ -41,8 +41,10 @@ export let json = {
     email: "",
 }
 
-export let serverResponse = {};
+export let responseData = {};
+export let responseError = {};
 export let responseStatus = "";
+export let proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
 document.addEventListener(onload, registration());
 

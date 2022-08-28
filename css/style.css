@@ -419,6 +419,8 @@ a:hover {
   margin-bottom: 0;
   padding-left: 43px;
   padding-right: 43px;
+  background-color: #50de97;
+  border-color: #50de97;
 }
 
 @media screen and (max-width: 760px) {

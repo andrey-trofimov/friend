@@ -158,6 +158,9 @@ a:hover {
     padding-left: 43px;
     padding-right: 43px;
 
+    background-color: $color-valid;
+    border-color: $color-valid;
+
     @media screen and (max-width: 760px) {
         font-size: 1.125rem;
         max-width: 320px;
