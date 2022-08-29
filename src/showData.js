@@ -1,8 +1,9 @@
 import { buildProfilePage } from "./buildProfilePage.js";
-import { responseStatus, proxyUr, responseData } from "./registration";
+import { responseStatus, proxyUrl, responseData } from "./registration";
 
 export function showId(data) {
     document.getElementById("id-msg").innerHTML = `Присвоен идентификатор ${data.id.slice(0, 8)}`;
+    responseData = data;
     document.getElementById("submit").addEventListener("click", goProfile);
 }
 
@@ -21,11 +22,6 @@ export function showError(data) {
     }
 }
 
-export function showProfile(data) {
-    let arr = ["name", "birth", "email", "tg"]
-    arr.forEach(key => document.getElementById(`${key}`).innerHTML = `${data[key]}`);
-}
-
 export function goHome() {
     document.location = "./";
 }
@@ -33,8 +29,9 @@ export function goHome() {
 export function goProfile() {
     buildProfilePage();
 
-    let userId = data.id;
-    options = {
+    let userId = responseData.id;
+
+    let options = {
         method: "GET",
         headers: {
             'accept': 'application/json',
@@ -49,4 +46,9 @@ export function goProfile() {
         })
         .then(data => showProfile(data));
 
+}
+
+export function showProfile(data) {
+    let arr = ["name", "birth", "email", "tg"]
+    arr.forEach(key => document.getElementById(`${key}`).innerHTML = `${data[key]}`);
 }
