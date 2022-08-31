@@ -2,7 +2,7 @@ export function buildProfilePage() {
     document.querySelector("main").className = "";
     document.querySelector(".container").innerHTML = `
         
-        <div class="nav"><a href="/">Главная</a> / Профиль</div>
+        <div class="nav"><a href="./">Главная</a> / Профиль</div>
         <div class="profile-page">
             <h1 class="title title_profile-page">Профиль</h1>
 
