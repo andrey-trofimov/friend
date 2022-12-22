@@ -257,6 +257,7 @@ html {
 body {
   font-family: co_headline_corplight, sans-serif;
   line-height: 1.5rem;
+  background-color: white;
 }
 
 a {
